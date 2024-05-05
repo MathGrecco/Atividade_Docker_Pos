@@ -1,0 +1,9 @@
+{
+    "name": "aplicacao-web",
+    "version": "1.0.0",
+    "description": "Uma aplicação web em Node.js",
+    "main": "server.js",
+    "dependencies": {
+        "express": "^4.19.2"
+    }
+}

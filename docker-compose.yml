@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  web:
+    build: ./web
+    ports:
+      - "3000:3000"
+    networks:
+      - mynetwork
+    depends_on:
+      - db
+      - cache
+  db:
+    build: ./db
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    networks:
+      - mynetwork
+  cache:
+    build: ./cache
+    networks:
+      - mynetwork
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+
+volumes:
+  db_data:
